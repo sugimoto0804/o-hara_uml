@@ -1,9 +1,0 @@
-@startuml
-autonumber
-Bob --> Alice
-Bob <-- Alice
-Bob --> Alice
-Bob <-- Alice
-Bob --> Alice
-Bob <-- Alice
-@enduml
