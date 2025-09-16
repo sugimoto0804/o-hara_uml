@@ -1,0 +1,10 @@
+@startuml RoboDog
+skinparam  ComponentFontStyle rectange 
+
+' robodog
+[RoboDog] o-- [名前]
+[RoboDog] o-- [挨拶]
+[RoboDog] o-- [時刻]
+[RoboDog] o-- [2つの整数]
+[RoboDog] o-- [足し算結果]
+@enduml
