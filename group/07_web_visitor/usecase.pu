@@ -1,0 +1,22 @@
+@startuml Web訪問者ユースケース図
+left to right direction
+actor 訪問者 as V1
+
+rectangle Web訪問者登録システム as WVS {
+  usecase 登録手続き as U01
+  usecase "自分の情報を登録する" as U02
+  usecase "自分と他の人の情報を参照する" as U03
+  usecase "自分の情報を変更する" as U04
+  usecase "自分の情報を削除する" as U05
+  usecase "ログインする" as U06
+  usecase "ログアウトする" as U07
+}
+
+V1 --> U01
+V1 --> U02
+V1 --> U03
+V1 --> U04
+V1 --> U05
+V1 --> U06
+V1 --> U07
+@enduml
