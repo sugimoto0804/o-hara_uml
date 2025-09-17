@@ -1,0 +1,46 @@
+@startuml Web訪問者システム-登録シーケンス図
+hide footbox
+skinparam boundaryBackgroundColor #D5E8D4
+skinparam controlBackgroundColor  #F8CECC
+skinparam entityBackgroundColor   #DAE8FC
+
+actor 訪問者 as A
+boundary メニュー画面 as B1
+boundary 登録手続画面 as B2
+boundary 登録完了画面 as B3
+control 入力検証 as C1
+control 訪問者情報登録 as C2
+entity 訪問者情報 as E
+
+A -> B1: 登録手続メニューを選択()
+activate B1
+
+B1 -> B2: 登録手続画面を表示()
+deactivate B1
+activate B2
+
+A -> B2: 訪問者情報を入力・送信()
+
+B2 -> C1: 入力内容を検証()
+activate C1
+
+opt 入力内容にエラーがある場合
+    C1 -> B2: エラーメッセージ表示して再送信を促す()
+end
+
+C1 -> C2: 登録情報登録()
+deactivate C1
+activate C2
+
+C2 -> E: 登録情報保存()
+activate E
+
+E --> C2: 保存完了()
+deactivate E
+
+C2 -> B3: 登録完了画面表示()
+deactivate C2
+deactivate B2
+activate B3
+
+@enduml
