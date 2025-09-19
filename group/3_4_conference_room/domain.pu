@@ -1,0 +1,12 @@
+@startuml conference_room
+skinparam  ComponentFontStyle rectange 
+
+' ユーザ
+[ユーザ] o-- [ユーザID]
+[ユーザ] o-- [会議室]
+[ユーザ] o-- [会議室名]
+[ユーザ] o-- [予約]
+[ユーザ] o-- [予約番号]
+[ユーザ] o-- [利用日時]
+[ユーザ] o-- [目的]
+@enduml
