@@ -4,18 +4,23 @@ hide circle
  
 class RoboDog {
 -myName : String
+' datetime? bigInt?=UNIXTime
+' UNIXTime 1970/01/01 00:00:00 を0として、1ずつ追加するもの
 -myTime :int
 -goodMorning :int
 -goodAfternoon :String
 -goodNight : String
 -firstValue : int
 -secondValue : int
+'教科書にはない
 -result : int
- 
+
+' 返り値: void -> 何も値を返さない
 +getMyName() : String
 +setMyName() : int
 +setNewTime() : void
 +getMyGreeting() : String
+'教科書にはない
 +setTwoValues() : void
 +setAndGetResult() : int
 }
