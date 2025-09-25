@@ -50,7 +50,7 @@ def set_first_value(first_value) -> None:
     """1つ目の値をJSONに保存"""
     with open(ROBODOG_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
-    data['first_value'] = first_value
+    data['first_value'] = int(first_value)
     with open(ROBODOG_FILE, 'w', encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 # set_second_value: second_valueをjsonに保存
@@ -58,7 +58,14 @@ def set_second_value(second_value) -> None:
     """2つ目の値をJSONに保存"""
     with open(ROBODOG_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
-    data['second_value'] = second_value
+    data['second_value'] = int(second_value)
     with open(ROBODOG_FILE, 'w', encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-# get_addition: jsonから値を取ってきて、足し算した結果を返却
+def get_addition() -> int:
+    """足し算の結果を返す"""
+    with open(ROBODOG_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    addition = data['first_value'] + data['second_value']
+
+    return addition
