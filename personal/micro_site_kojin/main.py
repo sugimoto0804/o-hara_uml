@@ -20,7 +20,7 @@ def application(environ, start_response):
         body = greet_with_time()
 
     elif path == "/calc":
-        body = add_numbers(environ)
+        body == add_numbers(environ)
 
     else:
         start_response("404 Not Found", headers)
