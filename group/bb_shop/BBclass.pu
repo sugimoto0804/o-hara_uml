@@ -1,4 +1,4 @@
-@startuml
+@startuml BB_Shop
 skinparam classAttributeIconSize 0
 
 ' 顧客クラス
