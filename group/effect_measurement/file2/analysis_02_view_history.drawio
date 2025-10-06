@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="jacj8VaNtq4-BNi4eWrG" name="ページ1">
-        <mxGraphModel dx="3656" dy="838" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+        <mxGraphModel dx="3313" dy="698" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -8,7 +8,7 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="2" value="事務職員" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="190" width="30" height="60" as="geometry"/>
+                    <mxGeometry x="70" y="130" width="30" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="60" value="" style="edgeStyle=none;html=1;exitX=0.523;exitY=0.993;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.417;entryY=0.141;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="3" target="59">
                     <mxGeometry relative="1" as="geometry"/>
@@ -23,19 +23,19 @@
                     <mxGeometry x="450" y="160" width="100" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="貸出履歴メニューを押下" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="150" width="110" height="30" as="geometry"/>
+                    <mxGeometry x="110" y="90" width="110" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="貸出履歴検索画面を表示" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="340" y="160" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="310" y="200" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="" style="endArrow=classic;html=1;" parent="1" source="2" target="62" edge="1">
+                <mxCell id="10" value="" style="endArrow=classic;html=1;entryX=-0.009;entryY=0.423;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2" target="5" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="160" y="240" as="sourcePoint"/>
-                        <mxPoint x="180" y="310" as="targetPoint"/>
+                        <mxPoint x="147.13991644381076" y="265.78826071902597" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="11" value="書名を入力し検索" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="220" width="80" height="30" as="geometry"/>
+                    <mxGeometry x="140" y="250" width="80" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="" style="edgeStyle=none;html=1;" parent="1" source="12" target="15" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -55,9 +55,9 @@
                     <mxGeometry x="420" y="490" width="70" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="図書情報&lt;div&gt;テーブル&lt;/div&gt;" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                    <mxGeometry x="680" y="340" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="880" y="340" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="" style="edgeStyle=none;html=1;exitX=1.019;exitY=0.542;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.008;entryY=0.408;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="12" target="18" edge="1">
+                <mxCell id="19" value="" style="edgeStyle=none;html=1;exitX=1.019;exitY=0.542;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="12" target="71" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="505" y="418" as="sourcePoint"/>
                         <mxPoint x="495" y="452" as="targetPoint"/>
@@ -66,7 +66,7 @@
                 <mxCell id="20" value="書名で図書検索（部分一致）" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="540" y="330" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.019;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="18" target="12" edge="1">
+                <mxCell id="21" value="" style="endArrow=classic;html=1;exitX=-0.01;exitY=0.733;exitDx=0;exitDy=0;entryX=1.019;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="71" target="12" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="610" y="400" as="sourcePoint"/>
                         <mxPoint x="550" y="380" as="targetPoint"/>
@@ -112,15 +112,15 @@
                     <mxGeometry x="340" y="380" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="31" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;履歴を閲覧する&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;図書の管理番号を&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;押下する&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=none;fontColor=#FF3333;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="-10" y="300" width="130" height="30" as="geometry"/>
+                    <mxGeometry x="-20" y="255" width="130" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;貸出履歴取得&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=none;fontColor=#333333;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry x="385" y="300" width="90" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="33" value="貸出情報&lt;div&gt;テーブル&lt;/div&gt;" style="ellipse;shape=umlEntity;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                    <mxGeometry x="680" y="525" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="850" y="510" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="" style="endArrow=classic;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.79;exitY=0.942;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="12" target="33" edge="1">
+                <mxCell id="34" value="" style="endArrow=classic;html=1;exitX=0.79;exitY=0.942;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="12" target="70" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="460" y="510" as="sourcePoint"/>
                         <mxPoint x="510" y="460" as="targetPoint"/>
@@ -129,7 +129,7 @@
                 <mxCell id="35" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;管理番号で&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;貸出履歴表示&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF3333;" parent="1" vertex="1">
                     <mxGeometry x="630" y="460" width="90" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="" style="endArrow=classic;html=1;entryX=0.686;entryY=0.983;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.108;exitY=0.279;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="33" target="12" edge="1">
+                <mxCell id="36" value="" style="endArrow=classic;html=1;entryX=0.686;entryY=0.983;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.086;exitY=0.442;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="70" target="12" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="520" y="510" as="sourcePoint"/>
                         <mxPoint x="570" y="460" as="targetPoint"/>
@@ -185,26 +185,44 @@
                 <mxCell id="59" value="表示" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
                     <mxGeometry x="265" y="230" width="70" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="64" value="" style="edgeStyle=none;html=1;entryX=-0.006;entryY=0.405;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="62" target="5">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="62" value="書名検索" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-                    <mxGeometry x="140" y="250" width="70" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="66" value="履歴閲覧" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-                    <mxGeometry x="90" y="340" width="70" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="67" value="" style="edgeStyle=none;html=1;entryX=0.143;entryY=0.188;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="2" target="66">
+                <mxCell id="67" value="" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="2" target="5">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="200" y="360" as="sourcePoint"/>
-                        <mxPoint x="200" y="468" as="targetPoint"/>
+                        <mxPoint x="100.01000000000022" y="355.0400000000001" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="85" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="70" value="貸出履歴" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="480" width="70" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="図書検索" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="330" width="70" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" style="edgeStyle=none;html=1;entryX=0.042;entryY=0.35;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="71" target="18">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="880" y="380" as="sourcePoint"/>
+                        <mxPoint x="760" y="380" as="targetPoint"/>
                         <Array as="points"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="68" value="" style="edgeStyle=none;html=1;entryX=0.013;entryY=0.56;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.012;exitY=0.447;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="66" target="5">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="120" y="560" as="sourcePoint"/>
-                        <mxPoint x="250" y="520" as="targetPoint"/>
+                <mxCell id="77" value="" style="endArrow=blockThin;endFill=1;endSize=12;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.001;entryY=0.677;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="18" target="71">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="620" y="370" as="sourcePoint"/>
+                        <mxPoint x="780" y="410" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="78" value="" style="endArrow=classic;html=1;exitX=0.976;exitY=0.612;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.034;entryY=0.264;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="70" target="33">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="727" y="550" as="sourcePoint"/>
+                        <mxPoint x="857" y="644" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="79" value="" style="endArrow=classic;html=1;entryX=0.885;entryY=0.818;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="33" target="70">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="840" y="560" as="sourcePoint"/>
+                        <mxPoint x="720" y="554" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>
