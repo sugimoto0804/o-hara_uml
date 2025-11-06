@@ -1,4 +1,4 @@
-@startuml
+@startuml フレンド検索シーケンス図
 hide footbox
 skinparam boundaryBackgroundColor #D5E8D4
 skinparam controlBackgroundColor  #F8CECC

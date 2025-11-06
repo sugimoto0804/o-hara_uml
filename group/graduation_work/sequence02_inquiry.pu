@@ -1,8 +1,12 @@
-@startuml
-title お問い合わせ機能 シーケンス図
+@startuml お問い合わせシーケンス図
+hide footbox
+
+skinparam boundaryBackgroundColor #D5E8D4
+skinparam controlBackgroundColor  #F8CECC
+
 actor ユーザー
-boundary "Contact_screen" as cs 
-control "Inqury_management" as im
+boundary "contact_screen" as cs 
+control "Inquiry_management" as im
 
 == 基本フロー ==
 
