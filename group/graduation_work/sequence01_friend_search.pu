@@ -5,9 +5,9 @@ skinparam controlBackgroundColor  #F8CECC
 skinparam entityBackgroundColor   #DAE8FC
 
 actor ユーザー
-boundary "friendList" as fl
-control "friendSearch" as fs
-entity "Frienddb" as db
+boundary "フレンド一覧" as fl
+control "フレンド検索" as fs
+entity "フレンド情報" as db
 
 == 基本フロー ==
 

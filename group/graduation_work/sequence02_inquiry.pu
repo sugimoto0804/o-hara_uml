@@ -4,8 +4,8 @@ hide footbox
 skinparam boundaryBackgroundColor #D5E8D4
 skinparam controlBackgroundColor  #F8CECC
 actor ユーザー
-boundary "contact_screen" as cs 
-control "Inquiry_management" as im
+boundary "お問い合わせ画面" as cs 
+control "お問い合わせ管理" as im
 
 ユーザー -> cs : 「お問い合わせ」ボタンを押下する
 cs -> im : お問い合わせ画面の表示要求
