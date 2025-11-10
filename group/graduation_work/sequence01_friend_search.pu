@@ -10,9 +10,12 @@ control "friendSearch" as fs
 entity "Frienddb" as db
 
 == 基本フロー ==
+
 ユーザー -> fl: 検索ボックスに検索ワードを入力
 ユーザー -> fl: 検索ボタンを押す
 fl -> fs: 検索ワードを送信
+
+== 代替フロー ==
 
 alt 検索ボックスが空の場合
     fs -> fl: 「検索ボックスが空になっています」と表示
