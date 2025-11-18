@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイページ</title>
+    <title>マイページ編集</title>
 </head>
 <body>
-    <h1>マイページ</h1>
+    <h1>マイページ編集</h1>
 
     <p>{{ user.username }}</p>
     <p>{{ user.userid }}</p>
     <p>{{ user.email }}</p>
     <p>{{ user.comment }}</p>
 
-    <form method="post" action="{% url ':mypageRegistration' %}">
+    <form method="post" action="{% url 'accounts:mypageRegistration' %}">
         {% csrf_token %}
         <button type="submit">登録</button>
     </form>
