@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイページ編集</title>
-</head>
-<body>
+{% include "tool/header.html" %}
     <h1>マイページ編集</h1>
     <p>{{user.username}}さん</p>
     <p>{{user.image}}</p>
@@ -16,8 +9,5 @@
 
     <form method="post" action="{% url 'accounts:mypageRegistration' %}">
         {% csrf_token %}
-        <button type="submit">登録</button>
     </form>
-
-</body>
-</html>
+{% include "tool/footer.html" %}
