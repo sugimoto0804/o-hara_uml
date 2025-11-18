@@ -7,12 +7,17 @@
 </head>
 <body>
     <h1>マイページ編集</h1>
+    <p>{{user.username}}さん</p>
     <p>{{user.image}}</p>
     <p>{{ user.username }}</p>
     <p>{{ user.user_id }}</p>
     <p>{{ user.email }}</p>
     <p>{{ user.memo }}</p>
 
+    <form method="post" action="{% url 'accounts:logout' %}">
+        {% csrf_token %}
+        <button type="submit">ログアウト</button>
+    </form>
     <form method="post" action="{% url 'accounts:mypageRegistration' %}">
         {% csrf_token %}
         <button type="submit">登録</button>
