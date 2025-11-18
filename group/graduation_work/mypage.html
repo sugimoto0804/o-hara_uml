@@ -9,9 +9,9 @@
     <h1>マイページ編集</h1>
 
     <p>{{ user.username }}</p>
-    <p>{{ user.userid }}</p>
+    <p>{{ user.user_id }}</p>
     <p>{{ user.email }}</p>
-    <p>{{ user.comment }}</p>
+    <p>{{ user.memo }}</p>
 
     <form method="post" action="{% url 'accounts:mypageRegistration' %}">
         {% csrf_token %}
