@@ -1,0 +1,31 @@
+{% extends "tool/base.html" %}
+{% block title %}マイページ登録{% endblock %}
+
+    {% block contents %}
+    <table>
+        <tr>
+            <th>　　　</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>　　　</th>
+            <td>{{ user.user_id }}</td>
+        </tr>
+        <tr>
+            <th>　　　</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>　　　</th>
+            <td>・・・・・・</td>
+        </tr>
+        <tr>
+            <th>　　　</th>
+            <td>{{ user.memo|default_if_none:"" }}</td>
+        </tr>
+    </table>
+    <form method="post" action="{% url 'accounts:logout' %}">
+        {% csrf_token %}
+        <button type="submit">登録</button>
+    </form>
+    {% endblock %}
