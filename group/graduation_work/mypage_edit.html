@@ -11,4 +11,12 @@
         {% csrf_token %}
         <button type="submit">登録</button>
     </form>
+    <form method="post" action="{% url 'diary:diary_view' %}">
+        {% csrf_token %}
+        <button type="submit">キャンセル</button>
+    </form>
+    <form method="post" action="{% url 'diary:diary_view' %}">
+        {% csrf_token %}
+        <button type="submit">保存</button>
+    </form>
     {% endblock %}
