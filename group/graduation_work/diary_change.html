@@ -2,8 +2,9 @@
 
 {% block title %}投稿変更{% endblock %}
 
-{% block contents %}
+    {% block contents %}
 <style>
+/* フォームとエラー表示に必要なCSSのみを抽出 */
 .main-content {
     padding: 20px;
     max-width: 600px;
@@ -13,12 +14,27 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
+.image-preview {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
 .file-select {
     border: 1px dashed #ccc;
     text-align: center;
-    padding: 20px;
-    margin-bottom: 15px;
+    padding: 15px;
     cursor: pointer;
+}
+
+.file-select input[type="file"] {
+    display: none;
 }
 
 .form-row {
@@ -68,9 +84,9 @@
 }
 
 #saveButton {
-    background-color: black;
+    background-color: #4CAF50;
     color: white;
-    border-color: black;
+    border-color: #4CAF50;
 }
 
 #cancelButton {
@@ -121,18 +137,24 @@
 
 <div class="main-content">
     
-    <div class="file-select">
-        [ファイルを再選択] または ドラッグ & ドロップ
-        <input type="file" id="imageUpload" style="display: none;">
+    <div class="image-preview">
+        {% if post.image.url %}
+            <img id="currentImage" src="{{ post.image.url }}" alt="現場の方の写真">
+        {% endif %}
+
+        <div class="file-select">
+            写真を再選択: [ファイルを再選択] または ドラッグ & ドロップ
+            <input type="file" id="imageUpload" style="display: none;">
+        </div>
     </div>
     
     <form id="postForm" method="post" action="{% url 'diary:diary_view' %}">
         {% csrf_token %}
         
         <div class="form-row">
-            <label for="event_Name">現場名</label>
+            <label for="eventName">現場名</label>
             <div class="input-group">
-                <input type="text" id="event_Name" name="event_name" class="input-field" value="{{ event_name }}">
+                <input type="text" id="eventName" name="event_name" class="input-field" value="{{ post.event_name|default:'' }}">
                 <span id="eventNameError" class="error-message">現場名が未入力です</span>
             </div>
         </div>
@@ -140,7 +162,7 @@
         <div class="form-row">
             <label for="comment">コメント</label>
             <div class="input-group">
-                <textarea id="comment" name="memo" class="textarea-field">{{ memo }}</textarea>
+                <textarea id="comment" name="memo" class="textarea-field">{{ post.memo|default:'' }}</textarea>
             </div>
         </div>
 
@@ -157,40 +179,51 @@
 </div>
 
 <script>
+// JavaScriptの定義
 document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.getElementById('saveButton');
-    const eventNameInput = document.getElementById('event_Name');
+    const eventNameInput = document.getElementById('eventName');
     const eventNameError = document.getElementById('eventNameError');
     const successModal = document.getElementById('success-modal');
-
+    
+    // エラー表示を初期状態に戻す関数
     function resetError() {
         eventNameInput.style.borderColor = '#ccc';
         eventNameError.style.display = 'none';
     }
 
+    // 現場名入力時のイベント
     eventNameInput.addEventListener('input', resetError);
 
+    // 「保存」ボタンのクリックイベント処理
     saveButton.addEventListener('click', function(e) {
         e.preventDefault(); 
         
-        const event_Name = eventNameInput.value.trim();
+        const eventName = eventNameInput.value.trim();
         
-        if (event_Name === "") {
+        if (eventName === "") {
+            // 現場名が空の場合: エラー表示を出す (2枚目の画像の状態)
             eventNameInput.style.borderColor = 'red';
             eventNameError.style.display = 'inline-block';
         } else {
+            // 現場名が入力されている場合: 成功モーダルを表示 (3枚目の画像の状態)
             resetError();
             successModal.style.display = 'block';
 
+            // 【注】成功時の実際のフォーム送信やAJAX処理は、ここに追加してください。
+            // postForm.submit(); 
         }
     });
 
+    // 「投稿一覧へ」ボタンのクリックイベント（ポップアップを閉じる）
     document.getElementById('toListButton').addEventListener('click', function() {
         successModal.style.display = 'none';
-        window.location.href = '{% url "diary:diary_view" %}';
+        // ここで投稿一覧ページへの遷移処理
     });
+
+    // 「キャンセル」ボタンのクリックイベント
     document.getElementById('cancelButton').addEventListener('click', function() {
-        window.history.back();
+        window.history.back(); // 簡易的なキャンセル処理として一つ前のページへ戻る
     });
 });
 </script>
