@@ -2,7 +2,196 @@
 
 {% block title %}投稿変更{% endblock %}
 
-    {% block contents %}
-    <p>現場名　{{ event_name }}</p>
-    <p>コメント　{{memo}}</p>
-    {% endblock %}
+{% block contents %}
+<style>
+.main-content {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.file-select {
+    border: 1px dashed #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.form-row {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.form-row label {
+    display: inline-block;
+    width: 80px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.input-group {
+    flex-grow: 1;
+}
+
+.input-field {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.textarea-field {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.button-wrapper {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.action-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    font-weight: bold;
+}
+
+#saveButton {
+    background-color: black;
+    color: white;
+    border-color: black;
+}
+
+#cancelButton {
+    background-color: white;
+    color: black;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    border: 1px solid red;
+    padding: 3px 8px;
+    margin-top: 5px;
+    display: none;
+    width: fit-content;
+    background-color: #ffebeb;
+    font-size: 0.9em;
+}
+
+#success-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #999;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    width: 250px;
+    display: none;
+}
+
+#success-modal p {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#toListButton {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+</style>
+
+<div class="main-content">
+    
+    <div class="file-select">
+        [ファイルを再選択] または ドラッグ & ドロップ
+        <input type="file" id="imageUpload" style="display: none;">
+    </div>
+    
+    <form id="postForm" method="post" action="{% url 'diary:diary_view' %}">
+        {% csrf_token %}
+        
+        <div class="form-row">
+            <label for="event_Name">現場名</label>
+            <div class="input-group">
+                <input type="text" id="event_Name" name="event_name" class="input-field" value="{{ event_name }}">
+                <span id="eventNameError" class="error-message">現場名が未入力です</span>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <label for="comment">コメント</label>
+            <div class="input-group">
+                <textarea id="comment" name="memo" class="textarea-field">{{ memo }}</textarea>
+            </div>
+        </div>
+
+        <div class="button-wrapper">
+            <button type="button" id="cancelButton" class="action-button">キャンセル</button>
+            <button type="button" id="saveButton" class="action-button">保存</button>
+        </div>
+    </form>
+</div>
+
+<div id="success-modal">
+    <p>投稿の変更が完了しました</p>
+    <button id="toListButton">投稿一覧へ</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const saveButton = document.getElementById('saveButton');
+    const eventNameInput = document.getElementById('event_Name');
+    const eventNameError = document.getElementById('eventNameError');
+    const successModal = document.getElementById('success-modal');
+
+    function resetError() {
+        eventNameInput.style.borderColor = '#ccc';
+        eventNameError.style.display = 'none';
+    }
+
+    eventNameInput.addEventListener('input', resetError);
+
+    saveButton.addEventListener('click', function(e) {
+        e.preventDefault(); 
+        
+        const event_Name = eventNameInput.value.trim();
+        
+        if (event_Name === "") {
+            eventNameInput.style.borderColor = 'red';
+            eventNameError.style.display = 'inline-block';
+        } else {
+            resetError();
+            successModal.style.display = 'block';
+
+        }
+    });
+
+    document.getElementById('toListButton').addEventListener('click', function() {
+        successModal.style.display = 'none';
+        window.location.href = '{% url "diary:diary_view" %}';
+    });
+    document.getElementById('cancelButton').addEventListener('click', function() {
+        window.history.back();
+    });
+});
+</script>
+{% endblock %}
