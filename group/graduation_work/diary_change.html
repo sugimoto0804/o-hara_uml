@@ -2,9 +2,8 @@
 
 {% block title %}投稿変更{% endblock %}
 
-    {% block contents %}
+{% block contents %}
 <style>
-/* フォームとエラー表示に必要なCSSのみを抽出 */
 .main-content {
     padding: 20px;
     max-width: 600px;
@@ -139,7 +138,7 @@
     
     <div class="image-preview">
         {% if post.image.url %}
-            <img id="currentImage" src="{{ post.image.url }}" alt="現場の方の写真">
+            <img id="currentImage" src="{{ post.image.url }}" alt="画像">
         {% endif %}
 
         <div class="file-select">
@@ -192,38 +191,43 @@ document.addEventListener('DOMContentLoaded', function() {
         eventNameError.style.display = 'none';
     }
 
-    // 現場名入力時のイベント
+    // 現場名入力
     eventNameInput.addEventListener('input', resetError);
 
-    // 「保存」ボタンのクリックイベント処理
+    // 「保存」ボタンのクリック処理
     saveButton.addEventListener('click', function(e) {
         e.preventDefault(); 
         
         const eventName = eventNameInput.value.trim();
         
         if (eventName === "") {
-            // 現場名が空の場合: エラー表示を出す (2枚目の画像の状態)
+            // 現場名が空の場合: エラー表示を出す
             eventNameInput.style.borderColor = 'red';
             eventNameError.style.display = 'inline-block';
         } else {
-            // 現場名が入力されている場合: 成功モーダルを表示 (3枚目の画像の状態)
+            // 現場名が入力されている場合: 成功モーダルを表示
             resetError();
+            
+            // ★実際にはここでAjaxなどを使ってサーバーへデータを送信する処理が入ります
+            // 例: fetch(...) 
+            
             successModal.style.display = 'block';
 
-            // 【注】成功時の実際のフォーム送信やAJAX処理は、ここに追加してください。
-            // postForm.submit(); 
+            // postForm.submit(); // モーダル表示中はフォームの送信はコメントアウト
         }
     });
 
-    // 「投稿一覧へ」ボタンのクリックイベント（ポップアップを閉じる）
+    // 「投稿一覧へ」ボタンのクリック時
     document.getElementById('toListButton').addEventListener('click', function() {
         successModal.style.display = 'none';
-        // ここで投稿一覧ページへの遷移処理
+        
+        // ⭐ 投稿一覧ページへの遷移処理 (URLパターン 'diary:diary_view' を使用)
+        window.location.href = "{% url 'diary:diary_view' %}";
     });
 
-    // 「キャンセル」ボタンのクリックイベント
+    // 「キャンセル」ボタンのクリック時
     document.getElementById('cancelButton').addEventListener('click', function() {
-        window.history.back(); // 簡易的なキャンセル処理として一つ前のページへ戻る
+        window.history.back(); // キャンセル処理として一つ前のページへ戻る
     });
 });
 </script>
