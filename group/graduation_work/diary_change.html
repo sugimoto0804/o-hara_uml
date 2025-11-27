@@ -210,7 +210,35 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // ★実際にはここでAjaxなどを使ってサーバーへデータを送信する処理が入ります
             // 例: fetch(...) 
-            
+const formData = new FormData();
+            formData.append('event_name', eventName);
+            formData.append('content', contentInput.value);
+            // CSRFトークンを追加 (Djangoなどで必要)
+            formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
+            // 画像ファイルが存在すれば追加
+            if (imageUploadInput.files.length > 0) {
+                formData.append('image', imageUploadInput.files[0]);
+            }
+
+            try {
+                    // フォームの action URL にデータを POST 送信
+                const response = await fetch(document.getElementById('postForm').action, {
+                    method: 'POST',
+                    // ファイルを含むため、Content-Typeは自動設定されるFormDataを使用
+                    body: formData, 
+                });
+
+                if (response.ok) {
+                    // サーバーからのレスポンスが成功 (HTTP 200-299) の場合
+                    successModal.style.display = 'block';
+                } else {
+                    // サーバーからのレスポンスが失敗の場合
+                    alert('投稿の保存に失敗しました。ステータス: ' + response.status);
+                }
+            } catch (error) {
+                console.error('通信エラー:', error);
+                alert('通信中にエラーが発生しました。');
+            }
             successModal.style.display = 'block';
 
             // postForm.submit(); // モーダル表示中はフォームの送信はコメントアウト
