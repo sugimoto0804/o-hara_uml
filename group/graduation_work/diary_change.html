@@ -3,260 +3,30 @@
 {% block title %}投稿変更{% endblock %}
 
 {% block contents %}
-<style>
-.main-content {
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
+  <h2>投稿変更</h2>
 
-.image-preview {
-    margin-bottom: 15px;
-    text-align: center;
-}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
 
-.image-preview img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-}
+    <p>
+      {{ form.image.label_tag }}
+      {{ form.image }}
+      {% if form.instance.image %}
+        <br>
+        <img src="{{ form.instance.image.url }}" alt="現在の画像" style="max-width:200px;">
+      {% endif %}
+    </p>
 
-.file-select {
-    border: 1px dashed #ccc;
-    text-align: center;
-    padding: 15px;
-    cursor: pointer;
-}
+    <p>
+      {{ form.event_name.label_tag }}
+      {{ form.event_name }}
+    </p>
 
-.file-select input[type="file"] {
-    display: none;
-}
+    <p>
+      {{ form.content.label_tag }}
+      {{ form.content }}
+    </p>
 
-.form-row {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start;
-}
-
-.form-row label {
-    display: inline-block;
-    width: 80px;
-    font-weight: bold;
-    padding-top: 5px;
-}
-
-.input-group {
-    flex-grow: 1;
-}
-
-.input-field {
-    border: 1px solid #ccc;
-    padding: 5px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.textarea-field {
-    border: 1px solid #ccc;
-    padding: 5px;
-    width: 100%;
-    height: 100px;
-    resize: vertical;
-    box-sizing: border-box;
-}
-
-.button-wrapper {
-    margin-top: 20px;
-    text-align: right;
-}
-
-.action-button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    cursor: pointer;
-    border: 1px solid #aaa;
-    font-weight: bold;
-}
-
-#saveButton {
-    background-color: white;
-    color: black;
-    border-color: black;
-}
-
-#cancelButton {
-    background-color: white;
-    color: black;
-}
-
-.error-message {
-    color: red;
-    font-weight: bold;
-    border: 1px solid red;
-    padding: 3px 8px;
-    margin-top: 5px;
-    display: none;
-    width: fit-content;
-    background-color: #ffebeb;
-    font-size: 0.9em;
-}
-
-#success-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    border: 1px solid #999;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 1000;
-    width: 250px;
-    display: none;
-}
-
-#success-modal p {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-#toListButton {
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-</style>
-
-<div class="main-content">
-    
-    <div class="image-preview">
-        {% if post.image.url %}
-            <img id="currentImage" src="{{ post.image.url }}" alt="画像">
-        {% endif %}
-
-        <div class="file-select">
-            写真を再選択: [ファイルを再選択] または ドラッグ & ドロップ
-            <input type="file" id="imageUpload" style="display: none;">
-        </div>
-    </div>
-    
-    <form id="postForm" method="post" action="{% url 'diary:diary_view' %}">
-        {% csrf_token %}
-        
-        <div class="form-row">
-            <label for="eventName">現場名</label>
-            <div class="input-group">
-                <input type="text" id="eventName" name="event_name" class="input-field" value="{{ post.event_name|default:'' }}">
-                <span id="eventNameError" class="error-message">現場名が未入力です</span>
-            </div>
-        </div>
-        
-        <div class="form-row">
-            <label for="content">コメント</label>
-            <div class="input-group">
-                <textarea id="content" name="content" class="textarea-field">{{ post.content|default:'' }}</textarea>
-            </div>
-        </div>
-
-        <div class="button-wrapper">
-            <button type="button" id="cancelButton" class="action-button">キャンセル</button>
-            <button type="button" id="saveButton" class="action-button">保存</button>
-        </div>
-    </form>
-</div>
-
-<div id="success-modal">
-    <p>投稿の変更が完了しました</p>
-    <button id="toListButton">投稿一覧へ</button>
-</div>
-
-<script>
-// JavaScriptの定義
-document.addEventListener('DOMContentLoaded', function() {
-    const saveButton = document.getElementById('saveButton');
-    const eventNameInput = document.getElementById('eventName');
-    const eventNameError = document.getElementById('eventNameError');
-    const successModal = document.getElementById('success-modal');
-    
-    // エラー表示を初期状態に戻す関数
-    function resetError() {
-        eventNameInput.style.borderColor = '#ccc';
-        eventNameError.style.display = 'none';
-    }
-
-    // 現場名入力
-    eventNameInput.addEventListener('input', resetError);
-
-    // 「保存」ボタンのクリック処理
-    saveButton.addEventListener('click', function(e) {
-        e.preventDefault(); 
-        
-        const eventName = eventNameInput.value.trim();
-        
-        if (eventName === "") {
-            // 現場名が空の場合: エラー表示を出す
-            eventNameInput.style.borderColor = 'red';
-            eventNameError.style.display = 'inline-block';
-        } else {
-            // 現場名が入力されている場合: 成功モーダルを表示
-            resetError();
-            
-            // ★実際にはここでAjaxなどを使ってサーバーへデータを送信する処理が入ります
-            // 例: fetch(...) 
-const formData = new FormData();
-            formData.append('event_name', eventName);
-            formData.append('content', contentInput.value);
-            // CSRFトークンを追加 (Djangoなどで必要)
-            formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
-            // 画像ファイルが存在すれば追加
-            if (imageUploadInput.files.length > 0) {
-                formData.append('image', imageUploadInput.files[0]);
-            }
-
-            try {
-                    // フォームの action URL にデータを POST 送信
-                const response = await fetch(document.getElementById('postForm').action, {
-                    method: 'POST',
-                    // ファイルを含むため、Content-Typeは自動設定されるFormDataを使用
-                    body: formData, 
-                });
-
-                if (response.ok) {
-                    // サーバーからのレスポンスが成功 (HTTP 200-299) の場合
-                    successModal.style.display = 'block';
-                } else {
-                    // サーバーからのレスポンスが失敗の場合
-                    alert('投稿の保存に失敗しました。ステータス: ' + response.status);
-                }
-            } catch (error) {
-                console.error('通信エラー:', error);
-                alert('通信中にエラーが発生しました。');
-            }
-            successModal.style.display = 'block';
-
-            // postForm.submit(); // モーダル表示中はフォームの送信はコメントアウト
-        }
-    });
-
-    // 「投稿一覧へ」ボタンのクリック時
-    document.getElementById('toListButton').addEventListener('click', function() {
-        successModal.style.display = 'none';
-        
-        // ⭐ 投稿一覧ページへの遷移処理 (URLパターン 'diary:diary_view' を使用)
-        window.location.href = "{% url 'diary:diary_view' %}";
-    });
-
-    // 「キャンセル」ボタンのクリック時
-    document.getElementById('cancelButton').addEventListener('click', function() {
-        window.history.back(); // キャンセル処理として一つ前のページへ戻る
-    });
-});
-</script>
+    <button type="submit">保存</button>
+  </form>
 {% endblock %}
