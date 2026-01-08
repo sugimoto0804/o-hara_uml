@@ -3,30 +3,28 @@
 {% block title %}投稿変更{% endblock %}
 
 {% block contents %}
-  <h2>投稿変更</h2>
-
-  <form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     <p>
-      {{ form.image.label_tag }}
-      {{ form.image }}
-      {% if form.instance.image %}
-        <br>
-        <img src="{{ form.instance.image.url }}" alt="現在の画像" style="max-width:200px;">
-      {% endif %}
+        {{ form.image.label_tag }}
+        {{ form.image }}
+        {% if form.instance.image %}
+            <br>
+            <img src="{{ form.instance.image.url }}" alt="現在の画像" width="200">
+        {% endif %}
     </p>
 
     <p>
-      {{ form.event_name.label_tag }}
-      {{ form.event_name }}
+        {{ form.event_name.label_tag }}
+        {{ form.event_name }}
     </p>
 
     <p>
-      {{ form.content.label_tag }}
-      {{ form.content }}
+        {{ form.content.label_tag }}
+        {{ form.content }}
     </p>
 
-    <button type="submit">保存</button>
-  </form>
+    <button type="submit">変更を保存</button>
+</form>
 {% endblock %}
