@@ -14,17 +14,3 @@
             <img src="{{ form.instance.image.url }}" alt="現在の画像" width="200">
         {% endif %}
     </p>
-
-    <p>
-        {{ form.event_name.label_tag }}
-        {{ form.event_name }}
-    </p>
-
-    <p>
-        {{ form.content.label_tag }}
-        {{ form.content }}
-    </p>
-
-    <button type="submit">変更を保存</button>
-</form>
-{% endblock %}
