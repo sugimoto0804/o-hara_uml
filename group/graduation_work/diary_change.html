@@ -14,3 +14,24 @@
             <img src="{{ form.instance.image.url }}" alt="現在の画像" width="200">
         {% endif %}
     </p>
+
+    <p>
+        {{ form.event_name.label_tag }}
+        {{ form.event_name }}
+    </p>
+
+    <p>
+        {{ form.content.label_tag }}
+        {{ form.content }}
+    </p>
+
+    <!-- ボタンエリア -->
+    <div style="margin-top: 20px;">
+        <button type="submit">保存</button>
+
+        <a href="{% url 'diary:diary_view' %}" style="margin-left: 10px;">
+            <button type="button">戻る</button>
+        </a>
+    </div>
+</form>
+{% endblock %}
